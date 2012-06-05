@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>db-readings by rxin</title>
+    <title>Readings in Databases</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -15,31 +15,101 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>db-readings</h1>
-        <p>Readings in Databases</p>
-        <p class="view"><a href="https://github.com/rxin/db-readings">View the Project on GitHub <small>rxin/db-readings</small></a></p>
-        <ul>
-          <li><a href="https://github.com/rxin/db-readings/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/rxin/db-readings/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/rxin/db-readings">View On <strong>GitHub</strong></a></li>
-        </ul>
+        <h1>Readings in Databases</h1>
       </header>
       <section>
-        <h3>Welcome!</h3>
 
-<p>A list of papers essential to the systems side of databases.</p>
+<p>A list of papers essential to understanding databases and building new data systems.</p>
 
-<h3>Database Internals</h3>
 
+<h3>Basics</h3>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/5-min-rule.pdf">The Five-Minute Rule Ten Years Later, and Other Computer Storage Rules of Thumb</a>: This paper (and the original one proposed 10 years earlier) illustrates a quantitative formula to calculate whether a data page should be cached in memory or not. It is a delight to read Jim Gray approach to an array of related problems, e.g. how big should a page size be.</p>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/Paxos.pdf">Paxos Made Simple</a>: Paxos is a fault-tolerant distributed consensus protocol. It forms the basis of a wide variety of distributed systems. The idea is simple, but notoriously difficult to understand (perhaps due to the way the original Paxos paper was written).</p>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/alphasort.pdf">AlphaSort: A Cache-Sensitive Parallel External Sort</a></p>
+
+
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<h3>Essentials of Relational Databases</h3>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/Relational-Model-Codd.pdf">A  Relational Model of Data for Large Shared Data Banks</a>: Codd's argument for data independence (from 1970), a fundamental concept in relational databases. Despite the current NoSQL trend, I believe ideas from this paper are becoming increasingly important in massively parallel data systems.</p>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/ARIES.pdf">ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging</a>: The first algorithm that actually works: it supports concurrent execution of transactions without losing data even in the presence of failures. This paper is very hard to read because it mixes a lot of low level details in the explanation of the high level algorithm. Perhaps try understand ARIES (log recovery) by reading a database textbook before attempting to read this paper.</p>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/B-tree.pdf">Efficient  Locking for Concurrent Operations on B-Trees</a> and <a href="http://www.cs.berkeley.edu/~rxin/db-papers/R-tree.pdf">The R*-tree: 
+An Efficient and Robust Access Method for Points and Rectangles</a>: B-Tree is a core data structure in databases (not just relational). It is optimized and has a low read amplification factor for random lookups of on-disk data. R-tree is an extension of B-tree to support lookups of multi-dimensional data, e.g. geodata.</p>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/OCC-Optimistic-Concurrency-Control.pdf">On Optimistic Methods for Concurrency Control</a>: There are two ways to support concurrency. The first is the pessimistic way, i.e. to lock shared data preemptively. This paper explains an alternatively to locking called Optimistic Concurrency Control. Optimistic approaches assume conflicts are rare and executes transactions without acquiring locks. Before committing the transactions, the database system checks for conflicts and aborts/restarts transactions if conflicts arise.</p>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/SystemR-Optimizer.pdf">Access Path Selection in a Relational Database Management System</a>: The basics of query optimization. SQL is declarative, i.e. you specify using a query language what data you want, not how you want it. There are usually multiple ways (query plans) of executing a query. The database system examines multiple plans and decides on an optimal one (best-effort). This process is called query optimization. The traditional way of doing query optimization is to have a cost-model for different access methods and query plans. This paper explains the cost-model and a dynamic programming algorithm to pick the best plan.</p>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/Eddies.pdf">Eddies: Continuously Adaptive Query Processing</a>: Traditional query optimization (and the cost model used) is static. There are two problems with the traditional model. First, it is hard to build the cost model absent of data statistics. Second, query execution environment might change in long running queries and a static approach cannot capture the change. Analogous to fluid dynamics, this paper proposes a set of techniques that optimize query execution dynamically. I don't think ideas in Eddies have made their way into commercial systems yet, but the paper is very refreshing to read and might become more important now.</p>
+
+
+
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
 <h3>Systems Design</h3>
 
-<ul>
-<li>A History and Evaluation of System R <a href="http://www.cs.ubc.ca/%7Erap/teaching/504/2010/readings/history-of-system-r.pdf">http://www.cs.ubc.ca/~rap/teaching/504/2010/readings/history-of-system-r.pdf</a>
-</li>
-</ul><h3>Database Reading Lists</h3>
+<p><a href="http://www.cs.ubc.ca/%7Erap/teaching/504/2010/readings/history-of-system-r.pdf">A History and Evaluation of System R</a>: There were System R from IBM and Ingres from Berkeley, two systems that showed relational database is a feasible idea. This paper describes System R. It is impressive and scary to note that the internals of relational database systems in 2012 look a lot like System R in 1981.</p>
 
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/C-Store.pdf">C-Store: A Column-oriented DBMS</a>: Describes the columnar database system optimized for analytical workloads. C-Store consists of two components: a read-optimized store and a (in-memory) writeable store optimized for updates.</p>
+
+<p><a href="http://research.google.com/archive/gfs.html">The Google File System</a> and <a href="http://research.google.com/archive/bigtable.html">Bigtable: A Distributed Storage System for Structured Data</a>: Two core components of Google's data infrastructure. GFS is an append-only distributed file system for large sequential reads (data-intensive applications). BigTable is high-performance distributed data store that builds on GFS. One way to think about it is that GFS is optimized for high throughput, and BigTable explains how to build a low-latency data store on top of GFS. Some of these might have been replaced by newer proprietary technologies internal to Google, but the ideas stand.</p>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/Chord-DHT.pdf">Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications</a> and <a href="http://www.cs.berkeley.edu/~rxin/db-papers/Dynamo.pdf">Dynamo: Amazon’s Highly Available Key-value Store</a>: Chord was born in the days when distributed hash tables was a hot research. It does one thing, and does it really well: how to look up the location of a key in a completely distributed setting (peer-to-peer) using consistent hashing. The Dynamo paper explains how to build a distributed key-value store using Chord. Note some design decisions change from Chord to Dynamo, e.g. finger table O(logN) vs O(N), because in Dynamo's case, Amazon has more control over nodes in a data center, while Chord assumes peer-to-peer nodes in wide area networks.</p>
+
+
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<h3>The New Paradigm</h3>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/CAP.pdf">CAP Twelve Years Later: How the "Rules" Have Changed</a></p>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/MapReduce.pdf">MapReduce: Simplified Data Processing on Large Clusters</a></p>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/Spark.pdf">Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing</a></p>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/cloudcomputing.pdf">A View of Cloud Computing</a></p>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/WarehouseScaleComputing.pdf">The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines</a></p>
+
+
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<h3>New Hardware</h3>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/SSD.pdf">Performance Modeling and Analysis of Flash-based Storage Devices</a></p>
+
+
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<h3>Miscellaneous</h3>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/TrustingTrust-Thompson.pdf">Reflections on Trusting Trust</a>:
+Ken Thompson's Turing Award acceptance speech in 1984, describing black box backdoor issues and pointing out trust is not absolute.
+</p>
+
+
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<h3>Database Reading Lists</h3>
 <p>A number of schools have their own reading lists for graduate students in databases.</p>
-
 <ul>
 <li>Berkeley: <a href="http://www.eecs.berkeley.edu/GradAffairs/CS/Prelims/db.html">http://www.eecs.berkeley.edu/GradAffairs/CS/Prelims/db.html</a>
 </li>
@@ -47,13 +117,12 @@
 </li>
 <li>Wisconsin: <a href="http://www.cs.wisc.edu/sites/default/files/db.reading.pdf">http://www.cs.wisc.edu/sites/default/files/db.reading.pdf</a>
 </li>
-</ul><h3>Support or Contact</h3>
-
-<p>File an issue on github or email <a href="mailto:rxin@cs.berkeley.edu">rxin@cs.berkeley.edu</a> for feedback and/or questions.</p>
+</ul>
       </section>
+
       <footer>
-        <p>This project is maintained by <a href="https://github.com/rxin">rxin</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p>This list is maintained by <a href="http://rxin.org">rxin@cs.berkeley.edu</a> (<a href="https://twitter.com/#!/rxin">@rxin</a>)</p>
+        <p><small>Theme modified from <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
