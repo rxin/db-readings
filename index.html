@@ -58,7 +58,7 @@ An Efficient and Robust Access Method for Points and Rectangles</a>: B-Tree is a
 <!--- ############################################################ -->
 <h3>Systems Design</h3>
 
-<p><a href="http://www.cs.ubc.ca/%7Erap/teaching/504/2010/readings/history-of-system-r.pdf">A History and Evaluation of System R</a>: There were System R from IBM and Ingres from Berkeley, two systems that showed relational database is a feasible idea. This paper describes System R. It is impressive and scary to note that the internals of relational database systems in 2012 look a lot like System R in 1981.</p>
+<p><a href="http://www.cs.ubc.ca/%7Erap/teaching/504/2010/readings/history-of-system-r.pdf">A History and Evaluation of System R</a>: There were System R from IBM and Ingres from Berkeley, two systems that showed relational database was feasible. This paper describes System R. It is impressive and scary to note that the internals of relational database systems in 2012 look a lot like System R in 1981.</p>
 
 <p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/C-Store.pdf">C-Store: A Column-oriented DBMS</a>: Describes the columnar database system optimized for analytical workloads. C-Store consists of two components: a read-optimized store and a (in-memory) writeable store optimized for updates.</p>
 
@@ -73,15 +73,16 @@ An Efficient and Robust Access Method for Points and Rectangles</a>: B-Tree is a
 <!--- ############################################################ -->
 <h3>The New Paradigm</h3>
 
-<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/CAP.pdf">CAP Twelve Years Later: How the "Rules" Have Changed</a></p>
+<p><a href="http://research.google.com/archive/mapreduce.html">MapReduce: Simplified Data Processing on Large Clusters</a>: MapReduce is both a programming model (borrowed from an old concept in functional programming) and a system at Google for distributed data-intensive computation. The programming model is so simple yet expressive enough to capture a wide range of programming needs. The system, coupled with the model, is fault-tolerant and scalable. It is probably fair to say that half of the academia are now working on problems heavily influenced by MapReduce.</p>
 
-<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/MapReduce.pdf">MapReduce: Simplified Data Processing on Large Clusters</a></p>
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/Spark.pdf">Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing</a>: This is the research paper behind the Spark cluster computing project at Berkeley. Spark exposes a distributed memory abstraction called RDD, which is an immutable collection of records distributed across a cluster's memory. RDDs can be transformed using MapReduce style computations. The RDD abstraction can be orders of magnitude more efficient for workloads that exhibit strong temporal locality, e.g. query processing and iterative machine learning. 
+Spark is an example of why it is important to separate the MapReduce programming model from its execution engine.</p>
 
-<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/Spark.pdf">Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing</a></p>
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/cloudcomputing.pdf">A View of Cloud Computing</a>: This paper discusses the economics and obstacles of cloud computing (referring to the elasticity of resources, not the consumer-facing "cloud") from a technical perspective. The obstacles presented in this paper will impact design decisions for systems running in the cloud.</p>
 
-<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/cloudcomputing.pdf">A View of Cloud Computing</a></p>
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/WarehouseScaleComputing.pdf">The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines</a>: Google's Luiz André Barroso and Urs Hölzle explains the basics of data center hardware and software for warehouse-scale computing. There is an <a href="http://dl.acm.org/citation.cfm?id=2019527&bnc=1">accompanying video</a>. The video talks about the importance of cutting long-tail latency in massively parallel systems. The other key idea is the disaggregation of resources. Technologies such as GFS/HDFS already disaggregate disks because of high network bandwidth, but yet to see the same trend applying to DRAMs because that'd require low-latency networking.</p>
 
-<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/WarehouseScaleComputing.pdf">The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines</a></p>
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/CAP.pdf">CAP Twelve Years Later: How the "Rules" Have Changed</a>: The CAP theorem, proposed by Eric Brewer, asserts that any net­worked shared-data system can have only two of three desirable properties: Consistency, Availability, and Partition-Tolerance. A number of NoSQL stores reference CAP to justify their decision to sacrifice consistency. This is Eric Brewer's writeup on CAP in retrospective, explaining "'2 of 3' formulation was always misleading because it tended to oversimplify the tensions among properties."</p>
 
 
 <!--- ############################################################ -->
@@ -113,6 +114,7 @@ Ken Thompson's Turing Award acceptance speech in 1984, describing black box back
 <ul>
 <li>Berkeley: <a href="http://www.eecs.berkeley.edu/GradAffairs/CS/Prelims/db.html">http://www.eecs.berkeley.edu/GradAffairs/CS/Prelims/db.html</a>
 </li>
+<li>Brown: <a href="http://www.cs.brown.edu/courses/cs227/papers.html">http://www.cs.brown.edu/courses/cs227/papers.html</a></li>
 <li>Stanford: <a href="http://infolab.stanford.edu/db_pages/infoqual.html">http://infolab.stanford.edu/db_pages/infoqual.html</a>
 </li>
 <li>Wisconsin: <a href="http://www.cs.wisc.edu/sites/default/files/db.reading.pdf">http://www.cs.wisc.edu/sites/default/files/db.reading.pdf</a>
