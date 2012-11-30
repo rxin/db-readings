@@ -43,8 +43,10 @@
 
 <p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/ARIES.pdf">ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging</a>: The first algorithm that actually works: it supports concurrent execution of transactions without losing data even in the presence of failures. This paper is very hard to read because it mixes a lot of low level details in the explanation of the high level algorithm. Perhaps try understand ARIES (log recovery) by reading a database textbook before attempting to read this paper.</p>
 
-<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/B-tree.pdf">Efficient  Locking for Concurrent Operations on B-Trees</a> and <a href="http://www.cs.berkeley.edu/~rxin/db-papers/R-tree.pdf">The R*-tree: 
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/B-tree.pdf">Efficient  Locking for Concurrent Operations on B-Trees</a> and <a href="http://www.cs.berkeley.edu/~rxin/db-papers/R-tree.pdf">The R*-tree:
 An Efficient and Robust Access Method for Points and Rectangles</a>: B-Tree is a core data structure in databases (not just relational). It is optimized and has a low read amplification factor for random lookups of on-disk data. R-tree is an extension of B-tree to support lookups of multi-dimensional data, e.g. geodata.</p>
+
+<p><a href="http://www.cs.duke.edu/courses/spring03/cps216/papers/oneil-quass-1997.pdf">Improved Query Performance with Variant Indexes</a>: Analytical databases and OLTP databases require different trade-offs. These are reflected in the choices of indexing data structures. This paper talks about a number of index data structures more suitable for analytical databases.</p>
 
 <p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/OCC-Optimistic-Concurrency-Control.pdf">On Optimistic Methods for Concurrency Control</a>: There are two ways to support concurrency. The first is the pessimistic way, i.e. to lock shared data preemptively. This paper explains an alternatively to locking called Optimistic Concurrency Control. Optimistic approaches assume conflicts are rare and executes transactions without acquiring locks. Before committing the transactions, the database system checks for conflicts and aborts/restarts transactions if conflicts arise.</p>
 
@@ -62,8 +64,6 @@ An Efficient and Robust Access Method for Points and Rectangles</a>: B-Tree is a
 
 <p><a href="http://www.cs.ubc.ca/%7Erap/teaching/504/2010/readings/history-of-system-r.pdf">A History and Evaluation of System R</a>: There were System R from IBM and Ingres from Berkeley, two systems that showed relational database was feasible. This paper describes System R. It is impressive and scary to note that the internals of relational database systems in 2012 look a lot like System R in 1981.</p>
 
-<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/C-Store.pdf">C-Store: A Column-oriented DBMS</a>: Describes the columnar database system optimized for analytical workloads. C-Store consists of two components: a read-optimized store and a (in-memory) writeable store optimized for updates.</p>
-
 <p><a href="http://research.google.com/archive/gfs.html">The Google File System</a> and <a href="http://research.google.com/archive/bigtable.html">Bigtable: A Distributed Storage System for Structured Data</a>: Two core components of Google's data infrastructure. GFS is an append-only distributed file system for large sequential reads (data-intensive applications). BigTable is high-performance distributed data store that builds on GFS. One way to think about it is that GFS is optimized for high throughput, and BigTable explains how to build a low-latency data store on top of GFS. Some of these might have been replaced by newer proprietary technologies internal to Google, but the ideas stand.</p>
 
 <p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/Chord-DHT.pdf">Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications</a> and <a href="http://www.cs.berkeley.edu/~rxin/db-papers/Dynamo.pdf">Dynamo: Amazon’s Highly Available Key-value Store</a>: Chord was born in the days when distributed hash tables was a hot research. It does one thing, and does it really well: how to look up the location of a key in a completely distributed setting (peer-to-peer) using consistent hashing. The Dynamo paper explains how to build a distributed key-value store using Chord. Note some design decisions change from Chord to Dynamo, e.g. finger table O(logN) vs O(N), because in Dynamo's case, Amazon has more control over nodes in a data center, while Chord assumes peer-to-peer nodes in wide area networks.</p>
@@ -73,12 +73,38 @@ An Efficient and Robust Access Method for Points and Rectangles</a>: B-Tree is a
 <!--- ############################################################ -->
 <!--- ############################################################ -->
 <!--- ############################################################ -->
-<h3>The New Paradigm</h3>
+<h3>Columnar Databases</h3>
+
+<p>Columnar storage and column-oriented query engine are critical to analytical workloads, e.g. OLAP.
+This section covers a collection of papers describing columnar database systems.</p>
+
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/C-Store.pdf">C-Store: A Column-oriented DBMS</a> and <a href="http://vldb.org/pvldb/vol5/p1790_andrewlamb_vldb2012.pdf">The Vertica Analytic Database: C-Store 7 Years Later</a>: C-Store is an influential, academic system done by the folks in New England. Vertica is the commercial incarnation of C-Store.</p>
+
+<p><a href="http://db.csail.mit.edu/projects/cstore/abadi-sigmod08.pdf">Column-Stores vs. Row-Stores: How Different Are They Really?</a>: Discusses the importance of both the columnar storage and the query engine.</p>
+
+<p><a href="http://research.google.com/pubs/pub36632.html">Dremel: Interactive Analysis of Web-Scale Datasets</a>: A jaw-dropping paper when Google published it. Dremel is a massively parallel analytical database used at Google for ad-hoc queries. The system runs on thousands of nodes to process terabytes of data in seconds. It applies columnar storage to complex, nested data structures. The paper talks a lot about the nested data structure support, and is a bit light on the details of the query execution. Note that a number of open source projects are claiming they are building "Dremel". The Dremel system achieves low-latency through massive parallelism and columnar storage, so the model doesn't necessarily make sense outside Google since very few companies in the world can afford thousands of nodes for ad-hoc queries.</p>
+
+<p><a href="http://vldb.org/pvldb/vol5/p1436_alexanderhall_vldb2012.pdf">Processing a Trillion Cells per Mouse Click</a>: Describes PowerDrill, a column-oriented, in-memory analytical database used at Google.</p>
+
+
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<h3>MapReduce and Data-Parallel Computation</h3>
 
 <p><a href="http://research.google.com/archive/mapreduce.html">MapReduce: Simplified Data Processing on Large Clusters</a>: MapReduce is both a programming model (borrowed from an old concept in functional programming) and a system at Google for distributed data-intensive computation. The programming model is so simple yet expressive enough to capture a wide range of programming needs. The system, coupled with the model, is fault-tolerant and scalable. It is probably fair to say that half of the academia are now working on problems heavily influenced by MapReduce.</p>
 
-<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/Spark.pdf">Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing</a>: This is the research paper behind the Spark cluster computing project at Berkeley. Spark exposes a distributed memory abstraction called RDD, which is an immutable collection of records distributed across a cluster's memory. RDDs can be transformed using MapReduce style computations. The RDD abstraction can be orders of magnitude more efficient for workloads that exhibit strong temporal locality, e.g. query processing and iterative machine learning. 
+<p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/Spark.pdf">Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing</a>: This is the research paper behind the Spark cluster computing project at Berkeley. Spark exposes a distributed memory abstraction called RDD, which is an immutable collection of records distributed across a cluster's memory. RDDs can be transformed using MapReduce style computations. The RDD abstraction can be orders of magnitude more efficient for workloads that exhibit strong temporal locality, e.g. query processing and iterative machine learning.
 Spark is an example of why it is important to separate the MapReduce programming model from its execution engine.</p>
+
+<p><a href="http://www.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-214">Shark: SQL and Rich Analytics at Scale</a>: Describes the Shark system, which is the SQL engine built on top of Spark. More importantly, the paper discusses why previous MapReduce query engines were slow.</p>
+
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<!--- ############################################################ -->
+<h3>Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)</h3>
 
 <p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/cloudcomputing.pdf">A View of Cloud Computing</a>: This paper discusses the economics and obstacles of cloud computing (referring to the elasticity of resources, not the consumer-facing "cloud") from a technical perspective. The obstacles presented in this paper will impact design decisions for systems running in the cloud.</p>
 
@@ -86,14 +112,9 @@ Spark is an example of why it is important to separate the MapReduce programming
 
 <p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/CAP.pdf">CAP Twelve Years Later: How the "Rules" Have Changed</a>: The CAP theorem, proposed by Eric Brewer, asserts that any net­worked shared-data system can have only two of three desirable properties: Consistency, Availability, and Partition-Tolerance. A number of NoSQL stores reference CAP to justify their decision to sacrifice consistency. This is Eric Brewer's writeup on CAP in retrospective, explaining "'2 of 3' formulation was always misleading because it tended to oversimplify the tensions among properties."</p>
 
-
-<!--- ############################################################ -->
-<!--- ############################################################ -->
-<!--- ############################################################ -->
-<!--- ############################################################ -->
-<h3>New Hardware</h3>
-
 <p><a href="http://www.cs.berkeley.edu/~rxin/db-papers/SSD.pdf">Performance Modeling and Analysis of Flash-based Storage Devices</a></p>
+
+<p>Note: I am looking for a good paper to cover GPUs. Any suggestions?</p>
 
 
 <!--- ############################################################ -->
