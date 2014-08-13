@@ -5,7 +5,7 @@ A list of papers essential to understanding databases and building new data syst
 ## <a name='TOC'>Table of Contents</a>
 
   1. [Basics and Algorithms](#basic-and-algo)
-  2. [Essentials of Relational Databases](#indent)
+  2. [Essentials of Relational Databases](#essentials)
   3. [Classic Systems Design](#system-design)
   4. [Columnar Databases](#column)
   5. [Data-Parallel Computation](#data-parallel)
@@ -22,7 +22,7 @@ A list of papers essential to understanding databases and building new data syst
 * [AlphaSort: A Cache-Sensitive Parallel External Sort](http://www.cs.berkeley.edu/~rxin/db-papers/alphasort.pdf): cache-friendly sorting
 
 
-## <a name='basic-and-algo'> Essentials of Relational Databases
+## <a name='essentials'> Essentials of Relational Databases
 
 * [Anatomy of a Database System](http://mitpress.mit.edu/books/chapters/0262693143chapm2.pdf): Joe Hellerstein's great overview of relational database systems. This essay walks readers through all components essential to relational database systems.
 
