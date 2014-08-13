@@ -21,6 +21,8 @@ A list of papers essential to understanding databases and building new data syst
 
 * [AlphaSort: A Cache-Sensitive Parallel External Sort](http://www.cs.berkeley.edu/~rxin/db-papers/alphasort.pdf): cache-friendly sorting
 
+* [Patience is a Virtue: Revisiting Merge and Sort on Modern Processors](http://research.microsoft.com/pubs/209622/patsort-sigmod14.pdf)(2014): Sorting revisited. Actually also a good survey on sorting algorithms used in practice and their trade-offs. 
+
 
 ## <a name='essentials'> Essentials of Relational Databases
 
