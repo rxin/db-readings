@@ -53,14 +53,39 @@ A list of papers essential to understanding databases and building new data syst
 
 ## <a name='column'> Columnar Databases
 
+Columnar storage and column-oriented query engine are critical to analytical workloads, e.g. OLAP. It's been almost 15 years since it first came out (the MonetDB paper in 1999), and almost every commercial warehouse database has a columnar engine by now.
+
+* [C-Store: A Column-oriented DBMS](http://www.cs.berkeley.edu/~rxin/db-papers/C-Store.pdf) and [The Vertica Analytic Database: C-Store 7 Years Later](http://vldb.org/pvldb/vol5/p1790_andrewlamb_vldb2012.pdf): C-Store is an influential, academic system done by the folks in New England. Vertica is the commercial incarnation of C-Store.
+
+* [Column-Stores vs. Row-Stores: How Different Are They Really?](http://vldb.org/pvldb/vol5/p1790_andrewlamb_vldb2012.pdf): Discusses the importance of both the columnar storage and the query engine.
+
+* [Dremel: Interactive Analysis of Web-Scale Datasets](http://research.google.com/pubs/pub36632.html): A jaw-dropping paper when Google published it. Dremel is a massively parallel analytical database used at Google for ad-hoc queries. The system runs on thousands of nodes to process terabytes of data in seconds. It applies columnar storage to complex, nested data structures. The paper talks a lot about the nested data structure support, and is a bit light on the details of the query execution. Note that a number of open source projects are claiming they are building "Dremel". The Dremel system achieves low-latency through massive parallelism and columnar storage, so the model doesn't necessarily make sense outside Google since very few companies in the world can afford thousands of nodes for ad-hoc queries.
+
+* [Processing a Trillion Cells per Mouse Click](http://vldb.org/pvldb/vol5/p1436_alexanderhall_vldb2012.pdf): Describes PowerDrill, a column-oriented, in-memory analytical database used at Google.
+
 
 ## <a name='data-parallel'> Data-Parallel Computation
+
+* [MapReduce: Simplified Data Processing on Large Clusters](): MapReduce is both a programming model (borrowed from an old concept in functional programming) and a system at Google for distributed data-intensive computation. The programming model is so simple yet expressive enough to capture a wide range of programming needs. The system, coupled with the model, is fault-tolerant and scalable. It is probably fair to say that half of the academia are now working on problems heavily influenced by MapReduce.
+
+* [Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing](http://www.cs.berkeley.edu/~rxin/db-papers/Spark.pdf): This is the research paper behind the Spark cluster computing project at Berkeley. Spark exposes a distributed memory abstraction called RDD, which is an immutable collection of records distributed across a cluster's memory. RDDs can be transformed using MapReduce style computations. The RDD abstraction can be orders of magnitude more efficient for workloads that exhibit strong temporal locality, e.g. query processing and iterative machine learning. Spark is an example of why it is important to separate the MapReduce programming model from its execution engine.
+
+* [Shark: SQL and Rich Analytics at Scale](https://amplab.cs.berkeley.edu/publication/shark-sql-and-rich-analytics-at-scale/): Describes the Shark system, which is the SQL engine built on top of Spark. More importantly, the paper discusses why previous SQL on Hadoop/MapReduce query engines were slow.
 
 
 ## <a name='trends'> Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)
 
+* [A View of Cloud Computing](http://www.cs.berkeley.edu/~rxin/db-papers/cloudcomputing.pdf): This is THE paper on Cloud Computing. This paper discusses the economics and obstacles of cloud computing (referring to the elasticity of resources, not the consumer-facing "cloud") from a technical perspective. The obstacles presented in this paper will impact design decisions for systems running in the cloud.
+
+* [The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines](http://www.cs.berkeley.edu/~rxin/db-papers/WarehouseScaleComputing.pdf): Google's Luiz André Barroso and Urs Hölzle explains the basics of data center hardware and software for warehouse-scale computing. There is an [accompanying video](http://dl.acm.org/citation.cfm?id=2019527&bnc=1). The video talks about the importance of cutting long-tail latency in massively parallel systems. The other key idea is the disaggregation of resources. Technologies such as GFS/HDFS already disaggregate disks because of high network bandwidth, but yet to see the same trend applying to DRAMs because that'd require low-latency networking.
+
+* [CAP Twelve Years Later: How the "Rules" Have Changed](http://www.cs.berkeley.edu/~rxin/db-papers/CAP.pdf): The CAP theorem, proposed by Eric Brewer, asserts that any net­worked shared-data system can have only two of three desirable properties: Consistency, Availability, and Partition-Tolerance. A number of NoSQL stores reference CAP to justify their decision to sacrifice consistency. This is Eric Brewer's writeup on CAP in retrospective, explaining "'2 of 3' formulation was always misleading because it tended to oversimplify the tensions among properties."
+
 
 ## <a name='misc'> Miscellaneous
+
+* [Reflections on Trusting Trust](http://www.cs.berkeley.edu/~rxin/db-papers/TrustingTrust-Thompson.pdf): Ken Thompson's Turing Award acceptance speech in 1984, describing black box backdoor issues and pointing out trust is not absolute.
+
 
 
 ## <a name='externel'> External Reading Lists
