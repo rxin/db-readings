@@ -2,8 +2,19 @@
 
 A list of papers essential to understanding databases and building new data systems.
 
+## <a name='TOC'>Table of Contents</a>
 
-## Basics and Algorithms
+  1. [Basics and Algorithms](#basic-and-algo)
+  2. [Essentials of Relational Databases](#indent)
+  3. [Classic Systems Design](#system-design)
+  4. [Columnar Databases](#column)
+  5. [Data-Parallel Computation](#data-parallel)
+  6. [Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)](#trends)
+  7. [Miscellaneous](#misc)
+  8. [External Reading Lists](#external)
+
+
+## <a name='basic-and-algo'> Basics and Algorithms
 * [The Five-Minute Rule Ten Years Later, and Other Computer Storage Rules of Thumb](http://www.cs.berkeley.edu/~rxin/db-papers/5-min-rule.pdf): This paper (and the original one proposed 10 years earlier) illustrates a quantitative formula to calculate whether a data page should be cached in memory or not. It is a delight to read Jim Gray approach to an array of related problems, e.g. how big should a page size be.
 
 * [Paxos Made Simple](http://www.cs.berkeley.edu/~rxin/db-papers/Paxos.pdf): Paxos is a fault-tolerant distributed consensus protocol. It forms the basis of a wide variety of distributed systems. The idea is simple, but notoriously difficult to understand (perhaps due to the way the original Paxos paper was written).
@@ -11,7 +22,7 @@ A list of papers essential to understanding databases and building new data syst
 * [AlphaSort: A Cache-Sensitive Parallel External Sort](http://www.cs.berkeley.edu/~rxin/db-papers/alphasort.pdf): cache-friendly sorting
 
 
-## Essentials of Relational Databases
+## <a name='basic-and-algo'> Essentials of Relational Databases
 
 * [Anatomy of a Database System](http://mitpress.mit.edu/books/chapters/0262693143chapm2.pdf): Joe Hellerstein's great overview of relational database systems. This essay walks readers through all components essential to relational database systems.
 
@@ -30,22 +41,22 @@ A list of papers essential to understanding databases and building new data syst
 * [Eddies: Continuously Adaptive Query Processing](http://www.cs.berkeley.edu/~rxin/db-papers/Eddies.pdf): Traditional query optimization (and the cost model used) is static. There are two problems with the traditional model. First, it is hard to build the cost model absent of data statistics. Second, query execution environment might change in long running queries and a static approach cannot capture the change. Analogous to fluid dynamics, this paper proposes a set of techniques that optimize query execution dynamically. I don't think ideas in Eddies have made their way into commercial systems yet, but the paper is very refreshing to read and might become more important now.
 
 
-## Classic Systems Design
+## <a name='system-design'> Classic Systems Design
 
 
-## Columnar Databases
+## <a name='column'> Columnar Databases
 
 
-## Data-Parallel Computation
+## <a name='data-parallel'> Data-Parallel Computation
 
 
-## Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)
+## <a name='trends'> Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)
 
 
-## Miscellaneous
+## <a name='misc'> Miscellaneous
 
 
-## External Reading Lists
+## <a name='externel'> External Reading Lists
 
 A number of schools have their own reading lists for graduate students in databases.
 
