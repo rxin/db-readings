@@ -72,6 +72,9 @@ Columnar storage and column-oriented query engine are critical to analytical wor
 
 * [Shark: SQL and Rich Analytics at Scale](https://amplab.cs.berkeley.edu/publication/shark-sql-and-rich-analytics-at-scale/) (2013): Describes the Shark system, which is the SQL engine built on top of Spark. More importantly, the paper discusses why previous SQL on Hadoop/MapReduce query engines were slow.
 
+* [Spanner](http://static.googleusercontent.com/media/research.google.com/en//archive/spanner-osdi2012.pdf) (2012): Spanner is "a scalable, multi-version, globally distributed, and synchronously replicated database". The linchpin that allows all this functionality is the TrueTime API which lets Spanner order events between nodes without having them communicate. [There is some speculation that the TrueTime API is very similar to a vector clock but each node has to store less data](http://www.cse.buffalo.edu/~demirbas/publications/augmentedTime.pdf). Sadly, a paper on TrueTime is promised, but hasn't yet been released.
+
+* [Dryad: Distributed Data-Parallel Programs from Sequential Building Blocks](http://cs.brown.edu/~debrabant/cis570-website/papers/dryad.pdf) (2007): Dryad is a programming model developed at Microsoft that enables large scale graph processing. "The fundamental difference between the \[MapReduce and Dryad\] is that a Dryad application may specify an arbitrary communication DAG rather than requiring a sequence of map/distribute/sort/reduce operations". 
 
 ## <a name='trends'> Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)
 
