@@ -41,6 +41,7 @@ A list of papers essential to understanding databases and building new data syst
 
 * [Eddies: Continuously Adaptive Query Processing](http://www.cs.berkeley.edu/~rxin/db-papers/Eddies.pdf) (2000): Traditional query optimization (and the cost model used) is static. There are two problems with the traditional model. First, it is hard to build the cost model absent of data statistics. Second, query execution environment might change in long running queries and a static approach cannot capture the change. Analogous to fluid dynamics, this paper proposes a set of techniques that optimize query execution dynamically. I don't think ideas in Eddies have made their way into commercial systems yet, but the paper is very refreshing to read and might become more important now.
 
+*[Volcano - An Extensible and Parallel Query Evaluation System](http://paperhub.s3.amazonaws.com/dace52a42c07f7f8348b08dc2b186061.pdf) (1994): A detailed example of the internal processing for an indiviual query in a way easily allowing for parallel execution of a query and implementation in modern programming languages. This is the step after the abstract relational algebra and the SystemR optimizer to produce query results.  
 
 ## <a name='system-design'> Classic System Design
 
