@@ -9,7 +9,7 @@ A list of papers essential to understanding databases and building new data syst
   3. [Classic System Design](#system-design)
   4. [Columnar Databases](#column)
   5. [Data-Parallel Computation](#data-parallel)
-  6. [Consensus](#consensus)
+  6. [Consensus and Consistency](#consensus)
   7. [Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)](#trends)
   8. [Miscellaneous](#misc)
   9. [External Reading Lists](#external)
