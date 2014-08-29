@@ -98,7 +98,7 @@ Columnar storage and column-oriented query engine are critical to analytical wor
 
 
 
-## <a name='externel'> External Reading Lists
+## <a name='external'> External Reading Lists
 
 A number of schools have their own reading lists for graduate students in databases.
 
