@@ -9,20 +9,18 @@ A list of papers essential to understanding databases and building new data syst
   3. [Classic System Design](#system-design)
   4. [Columnar Databases](#column)
   5. [Data-Parallel Computation](#data-parallel)
-  6. [Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)](#trends)
-  7. [Miscellaneous](#misc)
-  8. [External Reading Lists](#external)
+  6. [Consensus](#consensus)
+  7. [Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)](#trends)
+  8. [Miscellaneous](#misc)
+  9. [External Reading Lists](#external)
 
 
 ## <a name='basic-and-algo'> Basics and Algorithms
 * [The Five-Minute Rule Ten Years Later, and Other Computer Storage Rules of Thumb](http://www.cs.berkeley.edu/~rxin/db-papers/5-min-rule.pdf) (1997): This paper (and the original one proposed 10 years earlier) illustrates a quantitative formula to calculate whether a data page should be cached in memory or not. It is a delight to read Jim Gray approach to an array of related problems, e.g. how big should a page size be.
 
-* [Paxos Made Simple](http://www.cs.berkeley.edu/~rxin/db-papers/Paxos.pdf) (2001): Paxos is a fault-tolerant distributed consensus protocol. It forms the basis of a wide variety of distributed systems. The idea is simple, but notoriously difficult to understand (perhaps due to the way the original Paxos paper was written).
-
 * [AlphaSort: A Cache-Sensitive Parallel External Sort](http://www.cs.berkeley.edu/~rxin/db-papers/alphasort.pdf) (1995): cache-friendly sorting
 
 * [Patience is a Virtue: Revisiting Merge and Sort on Modern Processors](http://research.microsoft.com/pubs/209622/patsort-sigmod14.pdf) (2014): Sorting revisited. Actually also a good survey on sorting algorithms used in practice and their trade-offs.
-* [The Raft Consensus Algorithm](https://ramcloud.stanford.edu/wiki/download/attachments/11370504/raft.pdf) (2014) : Raft is a consensus algorithm designed as an alternative to Paxos. It was meant to be more understandable than Paxos by means of separation of logic, but it is also formally proven safe and offers some new features.[1] Raft offers a generic way to distribute a state machine across a cluster of computing systems, ensuring that each node in the cluster agrees upon the same series of state transitions. 
 
 
 ## <a name='essentials'> Essentials of Relational Databases
@@ -76,6 +74,13 @@ Columnar storage and column-oriented query engine are critical to analytical wor
 * [Spanner](http://static.googleusercontent.com/media/research.google.com/en//archive/spanner-osdi2012.pdf) (2012): Spanner is "a scalable, multi-version, globally distributed, and synchronously replicated database". The linchpin that allows all this functionality is the TrueTime API which lets Spanner order events between nodes without having them communicate. [There is some speculation that the TrueTime API is very similar to a vector clock but each node has to store less data](http://www.cse.buffalo.edu/~demirbas/publications/augmentedTime.pdf). Sadly, a paper on TrueTime is promised, but hasn't yet been released.
 
 * [Dryad: Distributed Data-Parallel Programs from Sequential Building Blocks](http://cs.brown.edu/~debrabant/cis570-website/papers/dryad.pdf) (2007): Dryad is a programming model developed at Microsoft that enables large scale dataflow programming. "The fundamental difference between the \[MapReduce and Dryad\] is that a Dryad application may specify an arbitrary communication DAG rather than requiring a sequence of map/distribute/sort/reduce operations". 
+
+
+## <a name='consensus'> Consensus
+
+* [Paxos Made Simple](http://www.cs.berkeley.edu/~rxin/db-papers/Paxos.pdf) (2001): Paxos is a fault-tolerant distributed consensus protocol. It forms the basis of a wide variety of distributed systems. The idea is simple, but notoriously difficult to understand (perhaps due to the way the original Paxos paper was written).
+
+* [The Raft Consensus Algorithm](https://ramcloud.stanford.edu/wiki/download/attachments/11370504/raft.pdf) (2014) : Raft is a consensus algorithm designed as an alternative to Paxos. It was meant to be more understandable than Paxos by means of separation of logic, but it is also formally proven safe and offers some new features.[1] Raft offers a generic way to distribute a state machine across a cluster of computing systems, ensuring that each node in the cluster agrees upon the same series of state transitions. 
 
 ## <a name='trends'> Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)
 
