@@ -99,6 +99,5 @@ A number of schools have their own reading lists for graduate students in databa
 * Brown: http://www.cs.brown.edu/courses/cs227/papers.html
 * Stanford: http://infolab.stanford.edu/db_pages/infoqual.html
 * Wisconsin: http://www.cs.wisc.edu/sites/default/files/db.reading.pdf
-
-See also, [the reading list](http://www.cs286.net/home/reading-list) for Joseph Hellerstein's graduate course in database systems at Berkeley. It is more comprehensive than this list, but there is substantial overlap.
+* [The reading list](http://www.cs286.net/home/reading-list) for Joseph Hellerstein's graduate course in database systems at Berkeley. It is more comprehensive than this list, but there is substantial overlap.
 
