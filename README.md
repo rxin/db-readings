@@ -25,7 +25,7 @@ A list of papers essential to understanding databases and building new data syst
 
 ## <a name='essentials'> Essentials of Relational Databases
 
-* [Anatomy of a Database System](https://mitpress.mit.edu/sites/default/files/titles/content/9780262693141_sch_0002.pdf) (200x): Joe Hellerstein's great overview of relational database systems. This essay walks readers through all components essential to relational database systems.
+* [Architecture of a Database System](http://db.cs.berkeley.edu/papers/fntdb07-architecture.pdf) (2007): Joe Hellerstein's great overview of relational database systems. This essay walks readers through all components essential to relational database systems.
 
 * [A Relational Model of Data for Large Shared Data Banks](http://www.cs.berkeley.edu/~rxin/db-papers/Relational-Model-Codd.pdf) (1970): Codd's argument for data independence (from 1970), a fundamental concept in relational databases. Despite the current NoSQL trend, I believe ideas from this paper are becoming increasingly important in massively parallel data systems.
 
