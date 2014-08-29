@@ -1,6 +1,6 @@
 # Readings in Databases
 
-A list of papers essential to understanding databases and building new data systems.
+A list of papers essential to understanding databases and building new data systems. The list is curated and maintained by Reynold Xin ([@rxin](http://twitter.com/rxin))
 
 ## <a name='TOC'>Table of Contents</a>
 
