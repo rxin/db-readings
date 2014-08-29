@@ -21,7 +21,8 @@ A list of papers essential to understanding databases and building new data syst
 
 * [AlphaSort: A Cache-Sensitive Parallel External Sort](http://www.cs.berkeley.edu/~rxin/db-papers/alphasort.pdf) (1995): cache-friendly sorting
 
-* [Patience is a Virtue: Revisiting Merge and Sort on Modern Processors](http://research.microsoft.com/pubs/209622/patsort-sigmod14.pdf) (2014): Sorting revisited. Actually also a good survey on sorting algorithms used in practice and their trade-offs. 
+* [Patience is a Virtue: Revisiting Merge and Sort on Modern Processors](http://research.microsoft.com/pubs/209622/patsort-sigmod14.pdf) (2014): Sorting revisited. Actually also a good survey on sorting algorithms used in practice and their trade-offs.
+* [The Raft Consensus Algorithm](https://ramcloud.stanford.edu/wiki/download/attachments/11370504/raft.pdf) (2014) : Raft is a consensus algorithm designed as an alternative to Paxos. It was meant to be more understandable than Paxos by means of separation of logic, but it is also formally proven safe and offers some new features.[1] Raft offers a generic way to distribute a state machine across a cluster of computing systems, ensuring that each node in the cluster agrees upon the same series of state transitions. 
 
 
 ## <a name='essentials'> Essentials of Relational Databases
