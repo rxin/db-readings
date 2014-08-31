@@ -91,6 +91,10 @@ Columnar storage and column-oriented query engine are critical to analytical wor
 
 * [The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines](http://www.cs.berkeley.edu/~rxin/db-papers/WarehouseScaleComputing.pdf): Google's Luiz André Barroso and Urs Hölzle explains the basics of data center hardware and software for warehouse-scale computing. There is an [accompanying video](http://dl.acm.org/citation.cfm?id=2019527&bnc=1). The video talks about the importance of cutting long-tail latency in massively parallel systems. The other key idea is the disaggregation of resources. Technologies such as GFS/HDFS already disaggregate disks because of high network bandwidth, but yet to see the same trend applying to DRAMs because that'd require low-latency networking.
 
+* [CryptDB: Protecting Confidentiality with Encrypted Query Processing](http://people.csail.mit.edu/nickolai/papers/raluca-cryptdb.pdf) (2011) Details a database system that wrapped column fields in several layers of encryption, depending on the datatype. As the system receives queries that demand more computation (say, comparisons), the columns affected are decrypted to the maximum level that still permits the query. This system was used against five historical and live databases at MIT.
+
+* [Orthogonal Security With Cipherbase](http://research.microsoft.com/apps/pubs/default.aspx?id=179425) (2013) Describes a Microsoft Research system to permit queries over encrypted data by joining a typical sql server on untrusted hardware with an FPGA. The trusted hardware is capable of decrypting the fields and performing sensitive query computations using onboard keys.
+
 
 ## <a name='misc'> Miscellaneous
 
