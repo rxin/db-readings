@@ -104,10 +104,8 @@ Columnar storage and column-oriented query engine are critical to analytical wor
 
 A number of schools have their own reading lists for graduate students in databases.
 
-* Berkeley: http://www.eecs.berkeley.edu/GradAffairs/CS/Prelims/db.html
-* Brown: http://www.cs.brown.edu/courses/cs227/papers.html
-* Stanford: http://infolab.stanford.edu/db_pages/infoqual.html
-* Wisconsin: http://www.cs.wisc.edu/sites/default/files/db.reading.pdf
-* MIT: Database Systems 6.830 from 2014 http://db.csail.mit.edu/6.830/sched.html and from 2010 http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-830-database-systems-fall-2010/readings/ (more summarized reading list)
-* [The reading list](http://www.cs286.net/home/reading-list) for Joseph Hellerstein's graduate course in database systems at Berkeley. It is more comprehensive than this list, but there is substantial overlap.
-
+* Berkeley [PhD prelim exam reading list](http://www.eecs.berkeley.edu/GradAffairs/CS/Prelims/db.html) and [CS286 grad database class reading list](http://www.cs286.net/home/reading-list)
+* [Brown CSCI 2270 Advanced Topics in Database Management](http://www.cs.brown.edu/courses/cs227/papers.html)
+* [Stanford PhD qualifying exam](http://infolab.stanford.edu/db_pages/infoqual.html)
+* [Wisconsin](http://www.cs.wisc.edu/sites/default/files/db.reading.pdf)
+* MIT: [Database Systems 6.830 year 2014](http://db.csail.mit.edu/6.830/sched.html) and [year 2010](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-830-database-systems-fall-2010/readings/)
