@@ -108,3 +108,4 @@ A number of schools have their own reading lists for graduate students in databa
 * [Brown CSCI 2270 Advanced Topics in Database Management](http://www.cs.brown.edu/courses/cs227/papers.html)
 * [Stanford PhD qualifying exam](http://infolab.stanford.edu/db_pages/infoqual.html)
 * MIT: [Database Systems 6.830 year 2014](http://db.csail.mit.edu/6.830/sched.html) and [year 2010](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-830-database-systems-fall-2010/readings/)
+* [Wisconsin Database Qualifying Exam Reading List (2014)](https://www.cs.wisc.edu/sites/default/files/pictures/Database%20systems%20qual_Summer%202014.pdf)
