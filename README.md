@@ -11,10 +11,11 @@ If you are reading this and taking the effort to understand these papers, we wou
   3. [Classic System Design](#system-design)
   4. [Columnar Databases](#column)
   5. [Data-Parallel Computation](#data-parallel)
-  6. [Consensus and Consistency](#consensus)
-  7. [Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)](#trends)
-  8. [Miscellaneous](#misc)
-  9. [External Reading Lists](#external)
+  6. [Snapshot Isolation](#si)
+  7. [Consensus and Consistency](#consensus)
+  8. [Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)](#trends)
+  9. [Miscellaneous](#misc)
+  10. [External Reading Lists](#external)
 
 
 ## <a name='basic-and-algo'> Basics and Algorithms
@@ -53,7 +54,6 @@ If you are reading this and taking the effort to understand these papers, we wou
 * [Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications](http://www.cs.berkeley.edu/~rxin/db-papers/Chord-DHT.pdf) (2001) and [Dynamo: Amazon’s Highly Available Key-value Store](http://www.cs.berkeley.edu/~rxin/db-papers/Dynamo.pdf) (2007): Chord was born in the days when distributed hash tables was a hot research. It does one thing, and does it really well: how to look up the location of a key in a completely distributed setting (peer-to-peer) using consistent hashing. The Dynamo paper explains how to build a distributed key-value store using Chord. Note some design decisions change from Chord to Dynamo, e.g. finger table O(logN) vs O(N), because in Dynamo's case, Amazon has more control over nodes in a data center, while Chord assumes peer-to-peer nodes in wide area networks.
 
 
-
 ## <a name='column'> Columnar Databases
 
 Columnar storage and column-oriented query engine are critical to analytical workloads, e.g. OLAP. It's been almost 15 years since it first came out (the MonetDB paper in 1999), and almost every commercial warehouse database has a columnar engine by now.
@@ -74,6 +74,20 @@ Columnar storage and column-oriented query engine are critical to analytical wor
 * [Shark: SQL and Rich Analytics at Scale](https://amplab.cs.berkeley.edu/publication/shark-sql-and-rich-analytics-at-scale/) (2013): Describes the Shark system, which is the SQL engine built on top of Spark. More importantly, the paper discusses why previous SQL on Hadoop/MapReduce query engines were slow.
 
 * [Spanner](http://static.googleusercontent.com/media/research.google.com/en//archive/spanner-osdi2012.pdf) (2012): Spanner is "a scalable, multi-version, globally distributed, and synchronously replicated database". The linchpin that allows all this functionality is the TrueTime API which lets Spanner order events between nodes without having them communicate. [There is some speculation that the TrueTime API is very similar to a vector clock but each node has to store less data](http://www.cse.buffalo.edu/~demirbas/publications/augmentedTime.pdf). Sadly, a paper on TrueTime is promised, but hasn't yet been released.
+
+
+## <a name='si'> Snapshot Isolation
+
+* [A Critique of ANSI SQL Isolation Levels](http://research.microsoft.com/pubs/69541/tr-95-51.pdf) (1995): Defines isolation levels in terms of phenomena, and shows that these and the ANSI SQL definitions fail to characterize several popular isolation levels. It also defines an important multiversion isolation type: *Snapshot Isolation (SI)*.
+
+* [A Read-Only Transaction Anomaly Under Snapshot Isolation](http://www.sigmod.org/publications/sigmod-record/0409/2.ROAnomONeil.pdf) (2004): Disproves the assumption that under Snapshot Isolation, read-only transactions always execute serializably provided the concurrent update transactions are serializable.
+
+* [Serializable Isolation for Snapshot Databases (SSI)](https://courses.cs.washington.edu/courses/cse444/08au/544M/READING-LIST/fekete-sigmod2008.pdf) (2008) and ([revised 2009 (ESSI)](http://dl.acm.org/citation.cfm?doid=1620585.1620587)): Describes a concurrency control algorithm that detects and prevents Snapshot Isolation anomalies at run-time, thus providing serializable isolation. Both papers are included for comparison, yet the second paper is more comprehensive and includes protection against additional phenomena and could be regarded as *Enhanced Serializable Snapshot Isolation (ESSI)*.
+
+* [Precisely Serializable Snapshot Isolation (PSSI)](http://www.cs.umb.edu/~eoneil/PSSI_ICDE11_Numbered.pdf) (2011): Defines an algorithm for precisely detecting Snapshot Isolation anomalies, resulting in less false-positive aborts than ESSI. Discuesses implementation of the algorithm in MySQL's InnoDB.
+
+* [Serializable Isolation in PostgreSQL](http://drkp.net/papers/ssi-vldb12.pdf) (2012):
+Discusses the trade-offs between SSI, ESSI and PSSI and the approach to implementation of SSI in PostgresSQL.
 
 
 ## <a name='consensus'> Consensus and Consistency
