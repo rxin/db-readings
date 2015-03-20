@@ -98,6 +98,7 @@ Columnar storage and column-oriented query engine are critical to analytical wor
 
 * [Reflections on Trusting Trust](http://www.cs.berkeley.edu/~rxin/db-papers/TrustingTrust-Thompson.pdf) (1984): Ken Thompson's Turing Award acceptance speech in 1984, describing black box backdoor issues and pointing out trust is not absolute.
 
+* [Fully Countering Trusting Trust through Diverse Double-Compiling](http://www.dwheeler.com/trusting-trust/dissertation/wheeler-trusting-trust-ddc.pdf) (2009): David A. Wheeler's PhD dissertation that shows how to counter the "Trusting Trust" attack. See also the [accompanying materials](http://www.dwheeler.com/trusting-trust/) which include an abstract, pointers to related work, and a video of his thesis defense.
 
 
 ## <a name='external'> External Reading Lists
