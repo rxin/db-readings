@@ -11,11 +11,12 @@ If you are reading this and taking the effort to understand these papers, we wou
   3. [Classic System Design](#system-design)
   4. [Columnar Databases](#column)
   5. [Data-Parallel Computation](#data-parallel)
-  6. [Snapshot Isolation](#si)
-  7. [Consensus and Consistency](#consensus)
-  8. [Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)](#trends)
-  9. [Miscellaneous](#misc)
-  10. [External Reading Lists](#external)
+  6. [Concurrency Control](#cc)
+  7. [Snapshot Isolation](#si)
+  8. [Consensus and Consistency](#consensus)
+  9. [Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)](#trends)
+  10. [Miscellaneous](#misc)
+  11. [External Reading Lists](#external)
 
 
 ## <a name='basic-and-algo'> Basics and Algorithms
@@ -74,6 +75,11 @@ Columnar storage and column-oriented query engine are critical to analytical wor
 * [Shark: SQL and Rich Analytics at Scale](https://amplab.cs.berkeley.edu/publication/shark-sql-and-rich-analytics-at-scale/) (2013): Describes the Shark system, which is the SQL engine built on top of Spark. More importantly, the paper discusses why previous SQL on Hadoop/MapReduce query engines were slow.
 
 * [Spanner](http://static.googleusercontent.com/media/research.google.com/en//archive/spanner-osdi2012.pdf) (2012): Spanner is "a scalable, multi-version, globally distributed, and synchronously replicated database". The linchpin that allows all this functionality is the TrueTime API which lets Spanner order events between nodes without having them communicate. [There is some speculation that the TrueTime API is very similar to a vector clock but each node has to store less data](http://www.cse.buffalo.edu/~demirbas/publications/augmentedTime.pdf). Sadly, a paper on TrueTime is promised, but hasn't yet been released.
+
+
+## <a name="cc"> Concurrency Control
+
+* [Concurrency Control in Distributed Database Systems](https://www.cs.berkeley.edu/~brewer/cs262/concurrency-distributed-databases.pdf) (1981): Reviews 48 principal methods of Concurrency Control in the know literature and consoldates them to present * Multi-version Concurrency Control* (MVCC).
 
 
 ## <a name='si'> Snapshot Isolation
