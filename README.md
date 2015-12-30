@@ -105,6 +105,8 @@ Discusses the trade-offs between SSI, ESSI and PSSI and the approach to implemen
 
 * [The Raft Consensus Algorithm](https://ramcloud.stanford.edu/wiki/download/attachments/11370504/raft.pdf) (2014) : Raft is a consensus algorithm designed as an alternative to Paxos. It was meant to be more understandable than Paxos by means of separation of logic, but it is also formally proven safe and offers some new features.[1] Raft offers a generic way to distribute a state machine across a cluster of computing systems, ensuring that each node in the cluster agrees upon the same series of state transitions. 
 
+* [Pirogue, a lighter dynamic version of the Raft distributed consensus algorithm](http://ipccc.org/ipccc2015/Proceedings/data/60894-ieee-ipccc-1.2778729/t005-1.2779313/f005-1.2779314/session05-03-1.2779321/session05-03-1.2779322.html) (2015): Introduces a dynamic-linear voting algorithm and reduces the number of nodes required in a Raft cluster.
+
 * [CAP Twelve Years Later: How the "Rules" Have Changed](http://www.computer.org/cms/Computer.org/ComputingNow/homepage/2012/0512/T_CO2_CAP12YearsLater.pdf) (2012): The CAP theorem, proposed by Eric Brewer, asserts that any net­worked shared-data system can have only two of three desirable properties: Consistency, Availability, and Partition-Tolerance. A number of NoSQL stores reference CAP to justify their decision to sacrifice consistency. This is Eric Brewer's writeup on CAP in retrospective, explaining "'2 of 3' formulation was always misleading because it tended to oversimplify the tensions among properties."
 
 
