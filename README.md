@@ -81,6 +81,9 @@ Columnar storage and column-oriented query engine are critical to analytical wor
 
 * [Concurrency Control in Distributed Database Systems](https://www.cs.berkeley.edu/~brewer/cs262/concurrency-distributed-databases.pdf) (1981): Reviews 48 principal methods of Concurrency Control in the know literature and consoldates them to present * Multi-version Concurrency Control* (MVCC).
 
+* [High-Performance Concurrency Control Mechanisms for Main-Memory Databases](http://vldb.org/pvldb/vol5/p298_per-akelarson_vldb2012.pdf) (2012): Presents efficient concurrency control mechanisms for main-memory databases using multiversioning.
+
+* [Rethinking Serializable Multiversion Concurrency Control](http://www.vldb.org/pvldb/vol8/p1190-faleiro.pdf) (2015): Presents a new concurrency control protocol for main-memory multi-versioned database systems - BOHM.
 
 ## <a name='si'> Snapshot Isolation
 
