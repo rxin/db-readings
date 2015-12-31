@@ -39,6 +39,10 @@ If you are reading this and taking the effort to understand these papers, we wou
 
 * [Efficient Locking for Concurrent Operations on B-Trees](http://www.cs.berkeley.edu/~rxin/db-papers/B-tree.pdf) (1981) and The [R*-tree: An Efficient and Robust Access Method for Points and Rectangles](http://www.cs.berkeley.edu/~rxin/db-papers/R-tree.pdf) (1990): B-Tree is a core data structure in databases (not just relational). It is optimized and has a low read amplification factor for random lookups of on-disk data. R-tree is an extension of B-tree to support lookups of multi-dimensional data, e.g. geodata.
 
+* [Stratified B-trees and versioning dictionaries](http://arxiv.org/abs/1103.4282v2) (2011) Improves on semi-external memory versioned B-trees, including CoW B-tree.
+
+* [A practical scalable distributed B-tree](http://www.hpl.hp.com/techreports/2007/HPL-2007-193.pdf) (2007): Combines optimistic concurrency control, lazy replication of inner nodes and eager replication of node versions, to achieve a performant distributed B-tree.
+
 * [Improved Query Performance with Variant Indexes](http://www.cs.duke.edu/courses/spring03/cps216/papers/oneil-quass-1997.pdf) (1997): Analytical databases and OLTP databases require different trade-offs. These are reflected in the choices of indexing data structures. This paper talks about a number of index data structures more suitable for analytical databases.
 
 * [On Optimistic Methods for Concurrency Control](http://www.cs.berkeley.edu/~rxin/db-papers/OCC-Optimistic-Concurrency-Control.pdf) (1981): There are two ways to support concurrency. The first is the pessimistic way, i.e. to lock shared data preemptively. This paper explains an alternatively to locking called Optimistic Concurrency Control. Optimistic approaches assume conflicts are rare and executes transactions without acquiring locks. Before committing the transactions, the database system checks for conflicts and aborts/restarts transactions if conflicts arise.
