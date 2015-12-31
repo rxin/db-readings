@@ -35,6 +35,8 @@ If you are reading this and taking the effort to understand these papers, we wou
 
 * [ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging](http://www.cs.berkeley.edu/~rxin/db-papers/ARIES.pdf) (1992): The first algorithm that actually works: it supports concurrent execution of transactions without losing data even in the presence of failures. This paper is very hard to read because it mixes a lot of low level details in the explanation of the high level algorithm. Perhaps try understand ARIES (log recovery) by reading a database textbook before attempting to read this paper.
 
+* [B-tree and UB-tree](http://www.scholarpedia.org/article/B-tree_and_UB-tree) (2008): A good explanation of B-Tree, B+-Tree and UB-Trees by the Inventor of the B-Tree, Dr Rudolf Bayer.
+
 * [Efficient Locking for Concurrent Operations on B-Trees](http://www.cs.berkeley.edu/~rxin/db-papers/B-tree.pdf) (1981) and The [R*-tree: An Efficient and Robust Access Method for Points and Rectangles](http://www.cs.berkeley.edu/~rxin/db-papers/R-tree.pdf) (1990): B-Tree is a core data structure in databases (not just relational). It is optimized and has a low read amplification factor for random lookups of on-disk data. R-tree is an extension of B-tree to support lookups of multi-dimensional data, e.g. geodata.
 
 * [Improved Query Performance with Variant Indexes](http://www.cs.duke.edu/courses/spring03/cps216/papers/oneil-quass-1997.pdf) (1997): Analytical databases and OLTP databases require different trade-offs. These are reflected in the choices of indexing data structures. This paper talks about a number of index data structures more suitable for analytical databases.
