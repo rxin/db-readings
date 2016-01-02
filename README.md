@@ -41,7 +41,7 @@ If you are reading this and taking the effort to understand these papers, we wou
 
 * [B-trees, Shadowing and Clones](http://liw.fi/larch/ohad-btrees-shadowing-clones.pdf) (2007): Describes a set of B-tree algorithms that respects shadowing and implements cloning whilst providing good concurrency. Takes a top-down approach to the B-tree and provides benchmark results.
 
-* [Stratified B-trees and versioning dictionaries](http://arxiv.org/abs/1103.4282v2) [(video)](https://vimeo.com/26180574) (2011) Improves on semi-external memory versioned B-trees, including CoW B-tree.
+* [Stratified B-trees and versioning dictionaries](http://arxiv.org/abs/1103.4282v2) [(video)](https://vimeo.com/26180574) (2011) Improves on semi-external memory versioned B-trees, including CoW B-tree. May have patent encumberance issues http://www.google.com/patents/WO2012110813A1?cl=en.
 
 * [A practical scalable distributed B-tree](http://www.hpl.hp.com/techreports/2007/HPL-2007-193.pdf) (2007): Combines optimistic concurrency control, lazy replication of inner nodes and eager replication of node versions, to achieve a performant distributed B-tree.
 
