@@ -45,6 +45,10 @@ If you are reading this and taking the effort to understand these papers, we wou
 
 * [Stratified B-trees and versioning dictionaries](http://arxiv.org/abs/1103.4282v2) [(video)](https://vimeo.com/26180574) (2011) Improves on semi-external memory versioned B-trees, including CoW B-tree. May have patent encumberance issues http://www.google.com/patents/WO2012110813A1?cl=en.
 
+* [bLSM: A General Purpose Log Structured Merge Tree](http://www.eecs.harvard.edu/~margo/cs165/papers/gp-lsm.pdf) (2012) Improves on the LSM tree with Bloom Filters for index performance and introduces a novel “Spring and Gear” merge scheduler which reduces write pauses.
+
+* [The Bw-Tree: A B-tree for New Hardware Platforms](http://research.microsoft.com/pubs/178758/bw-tree-icde2013-final.pdf) (2013) Provides a latch-free approach to B-trees by exploiting a mapping table of virtualized page addresses and a log structured store.
+
 * [A practical scalable distributed B-tree](http://www.hpl.hp.com/techreports/2007/HPL-2007-193.pdf) (2007): Combines optimistic concurrency control, lazy replication of inner nodes and eager replication of node versions, to achieve a performant distributed B-tree.
 
 * [Improved Query Performance with Variant Indexes](http://www.cs.duke.edu/courses/spring03/cps216/papers/oneil-quass-1997.pdf) (1997): Analytical databases and OLTP databases require different trade-offs. These are reflected in the choices of indexing data structures. This paper talks about a number of index data structures more suitable for analytical databases.
