@@ -37,6 +37,8 @@ If you are reading this and taking the effort to understand these papers, we wou
 
 * [B-tree and UB-tree](http://www.scholarpedia.org/article/B-tree_and_UB-tree) (2008): A good explanation of B-Tree, B+-Tree and UB-Trees by the Inventor of the B-Tree, Dr Rudolf Bayer.
 
+* [The Ubiquitous B-Tree](https://wwwold.cs.umd.edu/class/fall2002/cmsc818s/Readings/b-tree.pdf) (1979): Reviews B-trees and discusses several major variations of the B-tree, including B*-tree and B+-tree.
+
 * [Efficient Locking for Concurrent Operations on B-Trees](http://www.cs.berkeley.edu/~rxin/db-papers/B-tree.pdf) (1981) and The [R*-tree: An Efficient and Robust Access Method for Points and Rectangles](http://www.cs.berkeley.edu/~rxin/db-papers/R-tree.pdf) (1990): B-Tree is a core data structure in databases (not just relational). It is optimized and has a low read amplification factor for random lookups of on-disk data. R-tree is an extension of B-tree to support lookups of multi-dimensional data, e.g. geodata.
 
 * [B-trees, Shadowing and Clones](http://liw.fi/larch/ohad-btrees-shadowing-clones.pdf) (2007): Describes a set of B-tree algorithms that respects shadowing and implements cloning whilst providing good concurrency. Takes a top-down approach to the B-tree and provides benchmark results.
