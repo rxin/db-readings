@@ -84,6 +84,8 @@ Columnar storage and column-oriented query engine are critical to analytical wor
 
 * [CAP Twelve Years Later: How the "Rules" Have Changed](http://www.computer.org/cms/Computer.org/ComputingNow/homepage/2012/0512/T_CO2_CAP12YearsLater.pdf) (2012): The CAP theorem, proposed by Eric Brewer, asserts that any net­worked shared-data system can have only two of three desirable properties: Consistency, Availability, and Partition-Tolerance. A number of NoSQL stores reference CAP to justify their decision to sacrifice consistency. This is Eric Brewer's writeup on CAP in retrospective, explaining "'2 of 3' formulation was always misleading because it tended to oversimplify the tensions among properties."
 
+* [Consistency Tradeoffs in Modern Distributed Database SystemDesign](http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf) (2012): A good complement to: *CAP Twelve Years Later: How the "Rules" Have Changed*. It proposes a new formulation: PACELC, to include the Consistency-Latency tradeoff in modern DDBSs design choices. PACELC unifies this tradeoff with CAP to avoid some common misconceptions and illustrates how it could be applied to justify design choices on modern DDBSs like Dynamo, Cassandra or Riak.
+
 
 ## <a name='trends'> Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)
 
