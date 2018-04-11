@@ -11,10 +11,12 @@ If you are reading this and taking the effort to understand these papers, we wou
   3. [Classic System Design](#system-design)
   4. [Columnar Databases](#column)
   5. [Data-Parallel Computation](#data-parallel)
-  6. [Consensus and Consistency](#consensus)
-  7. [Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)](#trends)
-  8. [Miscellaneous](#misc)
-  9. [External Reading Lists](#external)
+  6. [Concurrency Control](#cc)
+  7. [Snapshot Isolation](#si)
+  8. [Consensus and Consistency](#consensus)
+  9. [Trends (Cloud Computing, Warehouse-scale Computing, New Hardware)](#trends)
+  10. [Miscellaneous](#misc)
+  11. [External Reading Lists](#external)
 
 
 ## <a name='basic-and-algo'> Basics and Algorithms
@@ -33,7 +35,21 @@ If you are reading this and taking the effort to understand these papers, we wou
 
 * [ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging](http://www.cs.berkeley.edu/~rxin/db-papers/ARIES.pdf) (1992): The first algorithm that actually works: it supports concurrent execution of transactions without losing data even in the presence of failures. This paper is very hard to read because it mixes a lot of low level details in the explanation of the high level algorithm. Perhaps try understand ARIES (log recovery) by reading a database textbook before attempting to read this paper.
 
+* [B-tree and UB-tree](http://www.scholarpedia.org/article/B-tree_and_UB-tree) (2008): A good explanation of B-Tree, B+-Tree and UB-Trees by the Inventor of the B-Tree, Dr Rudolf Bayer.
+
+* [The Ubiquitous B-Tree](https://wwwold.cs.umd.edu/class/fall2002/cmsc818s/Readings/b-tree.pdf) (1979): Reviews B-trees and discusses several major variations of the B-tree, including B*-tree and B+-tree.
+
 * [Efficient Locking for Concurrent Operations on B-Trees](http://www.cs.berkeley.edu/~rxin/db-papers/B-tree.pdf) (1981) and The [R*-tree: An Efficient and Robust Access Method for Points and Rectangles](http://www.cs.berkeley.edu/~rxin/db-papers/R-tree.pdf) (1990): B-Tree is a core data structure in databases (not just relational). It is optimized and has a low read amplification factor for random lookups of on-disk data. R-tree is an extension of B-tree to support lookups of multi-dimensional data, e.g. geodata.
+
+* [B-trees, Shadowing and Clones](http://liw.fi/larch/ohad-btrees-shadowing-clones.pdf) (2007): Describes a set of B-tree algorithms that respects shadowing and implements cloning whilst providing good concurrency. Takes a top-down approach to the B-tree and provides benchmark results.
+
+* [Stratified B-trees and versioning dictionaries](http://arxiv.org/abs/1103.4282v2) [(video)](https://vimeo.com/26180574) (2011) Improves on semi-external memory versioned B-trees, including CoW B-tree. May have patent encumberance issues http://www.google.com/patents/WO2012110813A1?cl=en.
+
+* [bLSM: A General Purpose Log Structured Merge Tree](http://www.eecs.harvard.edu/~margo/cs165/papers/gp-lsm.pdf) (2012) Improves on the LSM tree with Bloom Filters for index performance and introduces a novel “Spring and Gear” merge scheduler which reduces write pauses.
+
+* [The Bw-Tree: A B-tree for New Hardware Platforms](http://research.microsoft.com/pubs/178758/bw-tree-icde2013-final.pdf) (2013) Provides a latch-free approach to B-trees by exploiting a mapping table of virtualized page addresses and a log structured store.
+
+* [A practical scalable distributed B-tree](http://www.hpl.hp.com/techreports/2007/HPL-2007-193.pdf) (2007): Combines optimistic concurrency control, lazy replication of inner nodes and eager replication of node versions, to achieve a performant distributed B-tree.
 
 * [Improved Query Performance with Variant Indexes](http://www.cs.duke.edu/courses/spring03/cps216/papers/oneil-quass-1997.pdf) (1997): Analytical databases and OLTP databases require different trade-offs. These are reflected in the choices of indexing data structures. This paper talks about a number of index data structures more suitable for analytical databases.
 
@@ -51,7 +67,6 @@ If you are reading this and taking the effort to understand these papers, we wou
 * [The Google File System](http://research.google.com/archive/gfs.html) (2003) and [Bigtable: A Distributed Storage System for Structured Data](http://research.google.com/archive/bigtable.html) (2006): Two core components of Google's data infrastructure. GFS is an append-only distributed file system for large sequential reads (data-intensive applications). BigTable is high-performance distributed data store that builds on GFS. One way to think about it is that GFS is optimized for high throughput, and BigTable explains how to build a low-latency data store on top of GFS. Some of these might have been replaced by newer proprietary technologies internal to Google, but the ideas stand.
 
 * [Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications](http://www.cs.berkeley.edu/~rxin/db-papers/Chord-DHT.pdf) (2001) and [Dynamo: Amazon’s Highly Available Key-value Store](https://courses.cs.washington.edu/courses/csep552/18wi/papers/decandia-dynamo.pdf) (2007): Chord was born in the days when distributed hash tables was a hot research. It does one thing, and does it really well: how to look up the location of a key in a completely distributed setting (peer-to-peer) using consistent hashing. The Dynamo paper explains how to build a distributed key-value store using Chord. Note some design decisions change from Chord to Dynamo, e.g. finger table O(logN) vs O(N), because in Dynamo's case, Amazon has more control over nodes in a data center, while Chord assumes peer-to-peer nodes in wide area networks.
-
 
 
 ## <a name='column'> Columnar Databases
@@ -76,11 +91,35 @@ Columnar storage and column-oriented query engine are critical to analytical wor
 * [Spanner](http://static.googleusercontent.com/media/research.google.com/en//archive/spanner-osdi2012.pdf) (2012): Spanner is "a scalable, multi-version, globally distributed, and synchronously replicated database". The linchpin that allows all this functionality is the TrueTime API which lets Spanner order events between nodes without having them communicate. [There is some speculation that the TrueTime API is very similar to a vector clock but each node has to store less data](http://www.cse.buffalo.edu/~demirbas/publications/augmentedTime.pdf). Sadly, a paper on TrueTime is promised, but hasn't yet been released.
 
 
+## <a name="cc"> Concurrency Control
+
+* [Concurrency Control in Distributed Database Systems](https://www.cs.berkeley.edu/~brewer/cs262/concurrency-distributed-databases.pdf) (1981): Reviews 48 principal methods of Concurrency Control in the know literature and consoldates them to present * Multi-version Concurrency Control* (MVCC).
+
+* [High-Performance Concurrency Control Mechanisms for Main-Memory Databases](http://vldb.org/pvldb/vol5/p298_per-akelarson_vldb2012.pdf) (2012): Presents efficient concurrency control mechanisms for main-memory databases using multiversioning.
+
+* [Rethinking Serializable Multiversion Concurrency Control](http://www.vldb.org/pvldb/vol8/p1190-faleiro.pdf) (2015): Presents a new concurrency control protocol for main-memory multi-versioned database systems - BOHM.
+
+## <a name='si'> Snapshot Isolation
+
+* [A Critique of ANSI SQL Isolation Levels](http://research.microsoft.com/pubs/69541/tr-95-51.pdf) (1995): Defines isolation levels in terms of phenomena, and shows that these and the ANSI SQL definitions fail to characterize several popular isolation levels. It also defines an important multiversion isolation type: *Snapshot Isolation (SI)*.
+
+* [A Read-Only Transaction Anomaly Under Snapshot Isolation](http://www.sigmod.org/publications/sigmod-record/0409/2.ROAnomONeil.pdf) (2004): Disproves the assumption that under Snapshot Isolation, read-only transactions always execute serializably provided the concurrent update transactions are serializable.
+
+* [Serializable Isolation for Snapshot Databases (SSI)](https://courses.cs.washington.edu/courses/cse444/08au/544M/READING-LIST/fekete-sigmod2008.pdf) (2008) and ([revised 2009 (ESSI)](http://dl.acm.org/citation.cfm?doid=1620585.1620587)): Describes a concurrency control algorithm that detects and prevents Snapshot Isolation anomalies at run-time, thus providing serializable isolation. Both papers are included for comparison, yet the second paper is more comprehensive and includes protection against additional phenomena and could be regarded as *Enhanced Serializable Snapshot Isolation (ESSI)*.
+
+* [Precisely Serializable Snapshot Isolation (PSSI)](http://www.cs.umb.edu/~eoneil/PSSI_ICDE11_Numbered.pdf) (2011): Defines an algorithm for precisely detecting Snapshot Isolation anomalies, resulting in less false-positive aborts than ESSI. Discuesses implementation of the algorithm in MySQL's InnoDB.
+
+* [Serializable Isolation in PostgreSQL](http://drkp.net/papers/ssi-vldb12.pdf) (2012):
+Discusses the trade-offs between SSI, ESSI and PSSI and the approach to implementation of SSI in PostgresSQL.
+
+
 ## <a name='consensus'> Consensus and Consistency
 
 * [Paxos Made Simple](http://research.microsoft.com/en-us/um/people/lamport/pubs/paxos-simple.pdf) (2001): Paxos is a fault-tolerant distributed consensus protocol. It forms the basis of a wide variety of distributed systems. The idea is simple, but notoriously difficult to understand (perhaps due to the way the original Paxos paper was written).
 
 * [The Raft Consensus Algorithm](https://ramcloud.stanford.edu/wiki/download/attachments/11370504/raft.pdf) (2014) : Raft is a consensus algorithm designed as an alternative to Paxos. It was meant to be more understandable than Paxos by means of separation of logic, but it is also formally proven safe and offers some new features.[1] Raft offers a generic way to distribute a state machine across a cluster of computing systems, ensuring that each node in the cluster agrees upon the same series of state transitions. 
+
+* [Pirogue, a lighter dynamic version of the Raft distributed consensus algorithm](http://ipccc.org/ipccc2015/Proceedings/data/60894-ieee-ipccc-1.2778729/t005-1.2779313/f005-1.2779314/session05-03-1.2779321/session05-03-1.2779322.html) (2015): Introduces a dynamic-linear voting algorithm and reduces the number of nodes required in a Raft cluster.
 
 * [CAP Twelve Years Later: How the "Rules" Have Changed](http://www.computer.org/cms/Computer.org/ComputingNow/homepage/2012/0512/T_CO2_CAP12YearsLater.pdf) (2012): The CAP theorem, proposed by Eric Brewer, asserts that any net­worked shared-data system can have only two of three desirable properties: Consistency, Availability, and Partition-Tolerance. A number of NoSQL stores reference CAP to justify their decision to sacrifice consistency. This is Eric Brewer's writeup on CAP in retrospective, explaining "'2 of 3' formulation was always misleading because it tended to oversimplify the tensions among properties."
 
