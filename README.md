@@ -98,6 +98,8 @@ Columnar storage and column-oriented query engine are critical to analytical wor
 
 * [What Goes Around Comes Around](http://people.cs.umass.edu/~yanlei/courses/CS691LL-f06/papers/SH05.pdf): Michael Stonebraker and Joseph M. Hellerstein provide a summary of 35 years of data model proposals, grouped into 9 different eras. The paper discusses the proposals of each era, and show that there are only a few basic data modeling ideas, and most have been around a long time. Later proposals inevitably bear a strong resemblance to certain earlier proposals.
 
+* [Readings in Database Systems(The Red Book)](http://www.redbook.io): A compact and informative book by Peter Bailis, Joseph Hellerstein and Michael Stonebraker about the history and state of the art researches and developments an the field of data management systems.
+
 
 ## <a name='external'> External Reading Lists
 
