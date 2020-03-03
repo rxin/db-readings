@@ -56,7 +56,7 @@ If you are reading this and taking the effort to understand these papers, we wou
 
 ## <a name='column'> Columnar Databases
 
-Columnar storage and column-oriented query engine are critical to analytical workloads, e.g. OLAP. It's been almost 15 years since it first came out (the MonetDB paper in 1999), and almost every commercial warehouse database has a columnar engine by now.
+Columnar storage and column-oriented query engine are critical to analytical workloads, e.g. OLAP. It's been 20 years since it first came out (the MonetDB paper in 1999), and almost every commercial warehouse database has a columnar engine by now.
 
 * [C-Store: A Column-oriented DBMS](papers/cstore.pdf) (2005) and [The Vertica Analytic Database: C-Store 7 Years Later](papers/vertica-7-years.pdf) (2012): C-Store is an influential, academic system done by the folks in New England. Vertica is the commercial incarnation of C-Store.
 
@@ -102,8 +102,8 @@ Columnar storage and column-oriented query engine are critical to analytical wor
 A number of schools have their own reading lists for graduate students in databases.
 
 * Berkeley [PhD prelim exam reading list](http://www.eecs.berkeley.edu/GradAffairs/CS/Prelims/db.html) and [CS286 grad database class reading list](http://www.cs286.net/home/reading-list)
-* [Brown CSCI 2270 Advanced Topics in Database Management](http://www.cs.brown.edu/courses/cs227/papers.html)
+* [Brown CSCI 2270 Advanced Topics in Database Management](https://www.francosolleza.com/CS227/)
 * [Stanford PhD qualifying exam](http://infolab.stanford.edu/db_pages/infoqual.html)
-* MIT: [Database Systems 6.830 year 2014](http://db.csail.mit.edu/6.830/sched.html) and [year 2010](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-830-database-systems-fall-2010/readings/)
-* [Wisconsin Database Qualifying Exam Reading List (2014)](https://www.cs.wisc.edu/sites/default/files/pictures/Database%20systems%20qual_Summer%202014.pdf)
+* MIT: [Database Systems 6.830 year 2010](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-830-database-systems-fall-2010/readings/)
+* [Wisconsin Database Qualifying Exam Reading List (2014)](https://cs.wiscweb.wisc.edu/wp-content/uploads/sites/871/2018/12/Database-systems-qual_Summer-2014.pdf)
 * [CMU 15-721 Database Systems Reading List (Spring 2016)](http://15721.courses.cs.cmu.edu/spring2016/schedule.html)
