@@ -101,7 +101,7 @@ Columnar storage and column-oriented query engine are critical to analytical wor
 
 A number of schools have their own reading lists for graduate students in databases.
 
-* Berkeley [PhD prelim exam reading list](http://www.eecs.berkeley.edu/GradAffairs/CS/Prelims/db.html) and [CS286 Graduate Database Systems](https://cs286berkeley.net/) class's readings (columns "Paper 1",	"Paper 2" and	"Additional Resources" on Syllabus)
+* Berkeley [PhD prelim exam reading list](https://docs.google.com/spreadsheets/d/1QOf6UmSo87hELSZiDZZ3rSZngsh4CBcef06x-JkvCnI/edit?gid=652684559) and [CS286 grad database class reading list](http://www.cs286.net/home/reading-list)
 * [Brown CSCI 2270 Advanced Topics in Database Management](https://www.francosolleza.com/CS227/)
 * [Stanford PhD qualifying exam](http://infolab.stanford.edu/db_pages/infoqual.html)
 * MIT: [Database Systems 6.830 year 2010](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-830-database-systems-fall-2010/readings/)
