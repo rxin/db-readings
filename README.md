@@ -109,3 +109,4 @@ A number of schools have their own reading lists for graduate students in databa
 * MIT: [Database Systems 6.830 year 2010](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-830-database-systems-fall-2010/readings/)
 * [Wisconsin Database Qualifying Exam Reading List (2014)](https://cs.wiscweb.wisc.edu/wp-content/uploads/sites/871/2018/12/Database-systems-qual_Summer-2014.pdf)
 * [CMU 15-721 Database Systems Reading List (Spring 2016)](http://15721.courses.cs.cmu.edu/spring2016/schedule.html)
+* [TUM HyPer List of all publications](http://hyper-db.de/index.html#publications)
